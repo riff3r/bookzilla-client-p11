@@ -1,0 +1,19 @@
+.ph-1 {
+  position: relative;
+}
+.ph-1 h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background-color: var(--theme-color-text_link);
+  left: auto;
+  right: auto;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
