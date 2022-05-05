@@ -30,7 +30,7 @@ const PopularAuthors = () => {
   return (
     <div className="PopularAuthors">
       <Container>
-        <PrimaryHeading title="Most Popular Authors" />
+        <PrimaryHeading title="Pick From Most Popular Authors" />
 
         <Row>
           {Authors.map((author) => (

@@ -31,6 +31,7 @@ const MainNav = () => {
             </Nav.Link>
             <Nav.Link href="/">Manage Inventories</Nav.Link>
             <Nav.Link href="#pricing">Blog</Nav.Link>
+
             <button className="btn btn-outline-dark ">Login</button>
             <button className="btn btn-danger text-white">Signup</button>
 
