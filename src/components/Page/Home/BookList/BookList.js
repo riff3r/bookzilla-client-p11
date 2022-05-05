@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Books = [
   {
@@ -112,9 +113,9 @@ const BookList = () => {
                       <span>Publisher:</span> {book.publisher}
                     </p>
 
-                    <a href="#fg" className="btn btn-danger">
+                    <Link to="/inventory/1234" className="btn btn-danger">
                       Update
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

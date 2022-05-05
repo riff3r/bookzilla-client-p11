@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./MainNav.css";
 
 const MainNav = () => {
@@ -14,7 +15,8 @@ const MainNav = () => {
       <Container>
         <Navbar.Brand
           className="fs-1 d-flex gap-2 align-items-center"
-          href="#home"
+          as={Link}
+          to="/"
         >
           <i className="bi bi-book text-danger"></i>
 
@@ -26,11 +28,15 @@ const MainNav = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto gap-3 fs-6">
-            <Nav.Link className="active" href="/">
+            <Nav.Link className="active" as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link href="/">Manage Inventories</Nav.Link>
-            <Nav.Link href="#pricing">Blog</Nav.Link>
+            <Nav.Link as={Link} to="manage-inventory">
+              Manage Inventories
+            </Nav.Link>
+            <Nav.Link as={Link} to="blog">
+              Blog
+            </Nav.Link>
 
             <button className="btn btn-outline-dark ">Login</button>
             <button className="btn btn-danger text-white">Signup</button>
