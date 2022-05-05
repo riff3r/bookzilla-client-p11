@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { Fragment } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
 import "./MainNav.css";
 
@@ -35,15 +35,30 @@ const MainNav = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto gap-3 fs-6">
-            <Nav.Link className="active" as={Link} to="/">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              to="/"
+            >
               Home
-            </Nav.Link>
-            <Nav.Link as={Link} to="manage-inventory">
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              to="manage-inventory"
+            >
               Manage Inventories
-            </Nav.Link>
-            <Nav.Link as={Link} to="blog">
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              to="blog"
+            >
               Blog
-            </Nav.Link>
+            </NavLink>
 
             {!user ? (
               <Fragment>
