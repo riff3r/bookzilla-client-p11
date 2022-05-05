@@ -1,0 +1,13 @@
+.news-letter {
+  background-color: var(--theme-color-text_link);
+  color: white;
+}
+
+.news-letter h2::after {
+  background-color: #f5f5f4;
+}
+
+.news-letter .form-check-input:checked {
+  background-color: black;
+  border-color: black;
+}
