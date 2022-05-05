@@ -1,10 +1,11 @@
 import React from "react";
+import MainNav from "../MainNav/MainNav";
 
 const Header = () => {
   return (
-    <div>
-      <h1>Header</h1>
-    </div>
+    <header>
+      <MainNav />
+    </header>
   );
 };
 
