@@ -1,9 +1,16 @@
-import React from "react";
+import { signOut } from "firebase/auth";
+import React, { Fragment } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../Firebase/Firebase.init";
 import "./MainNav.css";
 
 const MainNav = () => {
+  const [user, loading, error] = useAuthState(auth);
+
+  console.log(user);
+
   return (
     <Navbar
       sticky="top"
@@ -38,22 +45,37 @@ const MainNav = () => {
               Blog
             </Nav.Link>
 
-            <button className="btn btn-outline-dark ">Login</button>
-            <button className="btn btn-danger text-white">Signup</button>
-
-            <NavDropdown
-              title={<i className="bi bi-person"></i>}
-              id="collasible-nav-dropdown"
-            >
-              <NavDropdown.Item href="#action/3.1">
+            {!user ? (
+              <Fragment>
                 {" "}
-                Manage Items
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">add item</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">My items</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
-            </NavDropdown>
+                <Link to="login" className="btn btn-outline-dark ">
+                  Login
+                </Link>
+                <Link to="signup" className="btn btn-danger text-white">
+                  Signup
+                </Link>
+              </Fragment>
+            ) : (
+              <NavDropdown
+                title={<i className="bi bi-person"> {user?.displayName}</i>}
+                id="collasible-nav-dropdown"
+              >
+                <NavDropdown.Item href="#action/3.1">
+                  {" "}
+                  Manage Items
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">add item</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">My items</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item
+                  as={Link}
+                  to="/"
+                  onClick={() => signOut(auth)}
+                >
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
