@@ -8,6 +8,7 @@ const Books = [
     year: 2015,
     price: 16.99,
     quantity: 100,
+    sold: 0,
     description:
       "In his twenty-two years as Prime Minister of Malaysia Dr Mahathir Mohamad transformed his country from an agricultural backwater into an industrial powerhouse that would become the seventeenth-largest trading nation in the world.",
     image:
@@ -22,6 +23,7 @@ const Books = [
     year: 2016,
     price: 20.0,
     quantity: 100,
+    sold: 0,
     description:
       "Wildflower is a portrait of Drew's life in stories as she looks back on the adventures, challenges, and incredible experiences she’s had throughout her life. It includes tales of living in her first apartment as a teenager (and how laundry may have saved her life), getting stuck under a gas station overhang on a cross—country road trip, saying good-bye to her father in a way only he could have understood, and many more journeys and lessons that have led her to the successful, happy, and healthy place she is today.",
     image:
@@ -31,6 +33,7 @@ const Books = [
     categories: ["Drama", "Novels"],
     tag: "Award Winners",
   },
+
   {
     title: "A Doctor in the House",
     year: 2015,
