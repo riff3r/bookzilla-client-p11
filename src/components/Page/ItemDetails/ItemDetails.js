@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 
 const ItemDetails = () => {
   const { id } = useParams();
-
   const [book, setBook] = useState({});
+  const [reload, setReload] = useState(true);
 
   let {
     image,
@@ -20,20 +20,23 @@ const ItemDetails = () => {
     tag,
     year,
   } = book;
+  console.log(quantity, sold);
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/inventory/${id}`)
       .then((response) => setBook(response.data));
-  }, []);
+  }, [reload]);
 
   const onHandleDelivery = () => {
     quantity -= 1;
-    console.log(quantity);
+    ++sold;
+
+    console.log(quantity, sold);
 
     axios
-      .put(`http://localhost:5000/inventory/${id}`, quantity)
-      .then((res) => console.log(res));
+      .put(`http://localhost:5000/inventory/${id}`, { quantity, sold })
+      .then((res) => setReload(!reload));
   };
 
   return (
@@ -61,7 +64,7 @@ const ItemDetails = () => {
           </p>
           {sold ? (
             <p>
-              Sold: <span>{sold}</span>{" "}
+              Sold: <strong>{sold}</strong>{" "}
             </p>
           ) : (
             ""
