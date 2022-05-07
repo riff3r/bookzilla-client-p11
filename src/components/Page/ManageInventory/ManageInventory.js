@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import useBooks from "../../hooks/useBooks";
+import { Link } from "react-router-dom";
 
 const ManageInventory = () => {
   const [books, setBooks] = useState([]);
@@ -26,12 +28,19 @@ const ManageInventory = () => {
 
   return (
     <div className="container my-5">
+      <div className="mb-3">
+        <Link to="/add" className="btn btn-danger">
+          Add New Book
+        </Link>
+      </div>
+
       <Table striped bordered hover>
         <thead className="">
           <tr>
             <th scope="col">Book Name</th>
             <th scope="col">Author</th>
             <th scope="col">Publisher</th>
+            <th scope="col">Quantity</th>
             <th scope="col">Price</th>
             <th scope="col">Action</th>
           </tr>
@@ -42,6 +51,7 @@ const ManageInventory = () => {
               <td>{book.title}</td>
               <td>{book.author}</td>
               <td>{book.publisher}</td>
+              <td>{book.quantity}</td>
               <td>${book.price}</td>
               <td>
                 <button
