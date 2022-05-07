@@ -1,8 +1,10 @@
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
+  let navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -11,8 +13,20 @@ const AddBook = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    let { price } = data;
 
-    axios.post(`http://localhost:5000/add`, { data });
+    let newPrice = +price;
+
+    console.log(newPrice);
+
+    if (newPrice !== "number") {
+      console.log(typeof newPrice);
+      return;
+    }
+
+    axios
+      .post(`http://localhost:5000/add`, { data })
+      .then((res) => navigate("/manage"));
   };
 
   return (
@@ -89,7 +103,7 @@ const AddBook = () => {
           </label>
           <input
             {...register("price")}
-            type="number"
+            type="text"
             className="form-control"
             id="price"
           />
