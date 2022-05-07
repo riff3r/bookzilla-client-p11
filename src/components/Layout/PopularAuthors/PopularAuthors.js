@@ -5,21 +5,25 @@ import "./PopularAuthors.css";
 
 const Authors = [
   {
+    id: 1,
     name: "Amy Stevens",
     image:
       "https://booklovers.ancorathemes.com/wp-content/uploads/2020/05/team1-copyright-570x741.jpg",
   },
   {
+    id: 2,
     name: "Steven Moore",
     image:
       "https://booklovers.ancorathemes.com/wp-content/uploads/2020/05/team2-copyright-570x741.jpg",
   },
   {
+    id: 3,
     name: "Jenny Sanders",
     image:
       "https://booklovers.ancorathemes.com/wp-content/uploads/2020/05/team3-copyright-570x741.jpg",
   },
   {
+    id: 4,
     name: "Andrew Woods",
     image:
       "https://booklovers.ancorathemes.com/wp-content/uploads/2020/05/team4-copyright-570x741.jpg",
@@ -34,7 +38,7 @@ const PopularAuthors = () => {
 
         <Row>
           {Authors.map((author) => (
-            <Col xs={6} md={3}>
+            <Col key={author.id} xs={6} md={3}>
               <div className="card">
                 <img src={author.image} className="card-img-top" alt="..." />
                 <div className="card-body">

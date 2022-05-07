@@ -2,8 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const ItemDetails = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
   const { id } = useParams();
   const [book, setBook] = useState({});
   const [reload, setReload] = useState(true);
@@ -20,7 +28,6 @@ const ItemDetails = () => {
     tag,
     year,
   } = book;
-  console.log(quantity, sold);
 
   useEffect(() => {
     axios
@@ -37,6 +44,19 @@ const ItemDetails = () => {
     axios
       .put(`http://localhost:5000/inventory/${id}`, { quantity, sold })
       .then((res) => setReload(!reload));
+  };
+
+  const onHandleRestock = (data) => {
+    const { restock } = data;
+
+    const newStock = quantity + +restock;
+
+    axios
+      .put(`http://localhost:5000/inventory/${id}`, { restock: newStock })
+      .then((res) => {
+        reset();
+        setReload(!reload);
+      });
   };
 
   return (
@@ -74,9 +94,25 @@ const ItemDetails = () => {
             Tag: <strong>{tag}</strong>
           </p>
 
-          <Button onClick={onHandleDelivery} variant="success">
+          <Button className="mb-3" onClick={onHandleDelivery} variant="danger">
             Delivered
           </Button>
+
+          <form className="w-50" onSubmit={handleSubmit(onHandleRestock)}>
+            <div className="input-group">
+              <input
+                {...register("restock", { required: true })}
+                type="number"
+                className="form-control"
+                placeholder="Restock Quantity"
+                aria-label="Restock Quantity"
+                required
+              />
+              <button className="btn btn-outline-danger" type="submit">
+                Restock
+              </button>
+            </div>
+          </form>
         </Col>
       </Row>
     </Container>
