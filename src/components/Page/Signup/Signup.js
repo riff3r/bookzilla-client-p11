@@ -5,6 +5,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../Firebase/Firebase.init";
 
@@ -35,15 +36,18 @@ const Signup = () => {
   };
 
   return (
-    <div className="container my-5">
-      <Form onSubmit={handleSubmit(onSubmitSignup)} className="w-50 mx-auto">
-        <h1 className="text-center">Signup</h1>
+    <div className="container my-5 py-5 vh-75">
+      <Form
+        className="w-50 mx-auto shadow p-5 rounded-3"
+        onSubmit={handleSubmit(onSubmitSignup)}
+      >
+        <h1 className="mb-4 text-center">Signup</h1>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>User Name</Form.Label>
+        <Form.Group className="mb-3" controlId="displayName">
           <Form.Control
             {...register("displayName", { required: true })}
             type="text"
+            placeholder="You Name"
           />
           {errors.displayName && (
             <span className="text-danger">This field is required</span>
@@ -51,7 +55,6 @@ const Signup = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
           <Form.Control
             {...register("email", { required: true })}
             type="email"
@@ -63,7 +66,6 @@ const Signup = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
           <Form.Control
             {...register("password", { required: true })}
             type="password"
@@ -86,9 +88,18 @@ const Signup = () => {
           )}
         </Form.Group>
 
-        <Button variant="danger" type="submit">
-          Submit
-        </Button>
+        <div className="d-grid gap-2 mb-4">
+          <Button className="py-2" variant="danger" type="submit">
+            Submit
+          </Button>
+        </div>
+
+        <p>
+          Already have an account?{" "}
+          <Link className="text-danger" to="/login">
+            Login
+          </Link>
+        </p>
       </Form>
     </div>
   );

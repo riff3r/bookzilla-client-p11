@@ -1,12 +1,14 @@
 import React from "react";
 import auth from "../../Firebase/Firebase.init";
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Login = () => {
   let navigate = useNavigate();
@@ -18,9 +20,13 @@ const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
+  const [sendPasswordResetEmail, sending, resetError] =
+    useSendPasswordResetEmail(auth);
+
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -32,17 +38,30 @@ const Login = () => {
     console.log(data);
   };
 
+  const handleForgetPassword = async (data) => {
+    let email = watch("email");
+
+    if (!email) {
+      toast("Please enter your Email");
+      return;
+    }
+
+    await sendPasswordResetEmail(email);
+
+    toast("Please check your email to reset password");
+  };
+
   let from = location.state?.from?.pathname || "/";
 
   if (emailUser || googleUser) navigate(from, { replace: true });
 
   return (
-    <div className="container my-5">
+    <div className="container my-5 py-5 vh-75">
       <Form
+        className="w-50 mx-auto shadow p-5 rounded-3"
         onSubmit={handleSubmit(onSubmitEmailLogin)}
-        className="w-50 mx-auto"
       >
-        <h1 className="text-center">Sign In</h1>
+        <h1 className="mb-4 text-center">Login </h1>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -57,7 +76,7 @@ const Login = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Enter Password</Form.Label>
           <Form.Control
             {...register("password", { required: true })}
             type="password"
@@ -69,12 +88,38 @@ const Login = () => {
           )}
         </Form.Group>
 
-        <Button variant="danger" type="submit">
-          Submit
-        </Button>
-      </Form>
+        <div className="d-grid gap-2 mb-4">
+          <Button className="py-2" variant="danger" type="submit">
+            Login
+          </Button>
 
-      <button onClick={() => signInWithGoogle()}>Google</button>
+          <h5 className="text-center">or</h5>
+
+          <Button
+            onClick={() => signInWithGoogle()}
+            variant="dark"
+            type="submit"
+          >
+            <i className="me-3 bi bi-google"></i>
+            Login With Google
+          </Button>
+        </div>
+
+        <a
+          href="#forgot"
+          onClick={handleForgetPassword}
+          className="text-danger mb-3 d-inline-block"
+        >
+          Forgot Password
+        </a>
+
+        <p>
+          Already have an account?{" "}
+          <Link className="text-danger" to="/signup">
+            Signup
+          </Link>
+        </p>
+      </Form>
     </div>
   );
 };
