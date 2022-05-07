@@ -63,10 +63,10 @@ const MainNav = () => {
             {!user ? (
               <Fragment>
                 {" "}
-                <Link to="login" className="btn btn-outline-dark ">
+                <Link to="login" className="btn btn-outline-dark py-2">
                   Login
                 </Link>
-                <Link to="signup" className="btn btn-danger text-white">
+                <Link to="signup" className="btn btn-danger text-white py-2">
                   Signup
                 </Link>
               </Fragment>

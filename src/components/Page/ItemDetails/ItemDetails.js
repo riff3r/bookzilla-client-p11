@@ -1,10 +1,82 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 const ItemDetails = () => {
+  const { id } = useParams();
+
+  const [book, setBook] = useState({});
+
+  let {
+    image,
+    title,
+    author,
+    description,
+    price,
+    quantity,
+    publisher,
+    sold,
+    tag,
+    year,
+  } = book;
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/inventory/${id}`)
+      .then((response) => setBook(response.data));
+  }, []);
+
+  const onHandleDelivery = () => {
+    quantity -= 1;
+    console.log(quantity);
+
+    axios
+      .put(`http://localhost:5000/inventory/${id}`, quantity)
+      .then((res) => console.log(res));
+  };
+
   return (
-    <div>
-      <h2>Details</h2>
-    </div>
+    <Container className="mt-5">
+      <Row md={4}>
+        <Col xs={6} md={4}>
+          <img className="img-fluid" src={image} alt="" />
+        </Col>
+
+        <Col xs={12} md={8}>
+          <h1>{title}</h1>
+          <p>Author: {author}</p>
+          <h4>
+            Price: <span className="text-danger">${price}</span>{" "}
+          </h4>
+          <p>{description}</p>
+          <p>
+            Publisher: <strong>{publisher}</strong>
+          </p>
+          <p>
+            Year of Publishing: <strong>{year}</strong>
+          </p>
+          <p>
+            Quantity: <strong>{quantity}</strong>
+          </p>
+          {sold ? (
+            <p>
+              Sold: <span>{sold}</span>{" "}
+            </p>
+          ) : (
+            ""
+          )}
+
+          <p>
+            Tag: <strong>{tag}</strong>
+          </p>
+
+          <Button onClick={onHandleDelivery} variant="success">
+            Delivered
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

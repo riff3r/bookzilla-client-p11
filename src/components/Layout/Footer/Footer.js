@@ -3,8 +3,9 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import "./Footer.css";
 
 const Footer = () => {
+  // fixed-bottom
   return (
-    <footer className="footer mt-5 pt-5 fixed-bottom">
+    <footer className="footer mt-5 pt-5">
       <div className="container">
         <div className="text-center">
           <h2>
