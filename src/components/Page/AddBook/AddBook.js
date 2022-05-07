@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -8,7 +9,11 @@ const AddBook = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+
+    axios.post(`http://localhost:5000/add`, { data });
+  };
 
   return (
     <div onSubmit={handleSubmit(onSubmit)} className="container mt-5">
