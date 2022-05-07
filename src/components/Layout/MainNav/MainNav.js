@@ -47,7 +47,7 @@ const MainNav = () => {
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
               }
-              to="manage-inventory"
+              to="manage"
             >
               Manage Inventories
             </NavLink>

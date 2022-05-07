@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const ItemDetails = () => {
@@ -113,6 +113,12 @@ const ItemDetails = () => {
               </button>
             </div>
           </form>
+
+          <div className="text-center mt-5">
+            <Link to="/manage" className="btn btn-dark px-3 py-2  shadow-lg ">
+              Manage Inventories
+            </Link>
+          </div>
         </Col>
       </Row>
     </Container>

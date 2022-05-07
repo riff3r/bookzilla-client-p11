@@ -19,21 +19,22 @@ import useBooks from "../../../hooks/useBooks";
 //     categories: ["Drama", "Mystery"],
 //     tag: "Best Sellers",
 //   },
-//   {
-//     title: "Wildflower",
-//     year: 2016,
-//     price: 20.0,
-//     quantity: 100,
-//     sold: 0,
-//     description:
-//       "Wildflower is a portrait of Drew's life in stories as she looks back on the adventures, challenges, and incredible experiences she’s had throughout her life. It includes tales of living in her first apartment as a teenager (and how laundry may have saved her life), getting stuck under a gas station overhang on a cross—country road trip, saying good-bye to her father in a way only he could have understood, and many more journeys and lessons that have led her to the successful, happy, and healthy place she is today.",
-//     image:
-//       "https://booklovers.ancorathemes.com/wp-content/uploads/2020/05/book13-copyright.jpg",
-//     author: "Drew Berrymore",
-//     publisher: "Manager FeedWise",
-//     categories: ["Drama", "Novels"],
-//     tag: "Award Winners",
-//   },
+
+// {
+//   "title": "Wildflower",
+//   "year": "2016",
+//   "price": "20.0",
+//   "quantity": "100",
+//   "sold": "0",
+//   "description":
+//     "Wildflower is a portrait of Drew's life in stories as she looks back on the adventures, challenges, and incredible experiences she’s had throughout her life. It includes tales of living in her first apartment as a teenager (and how laundry may have saved her life), getting stuck under a gas station overhang on a cross—country road trip, saying good-bye to her father in a way only he could have understood, and many more journeys and lessons that have led her to the successful, happy, and healthy place she is today.",
+//   "image":
+//     "https://booklovers.ancorathemes.com/wp-content/uploads/2020/05/book13-copyright.jpg",
+//   "author": "Drew Berrymore",
+//   "publisher": "Manager FeedWise",
+//   "categories": ["Drama", "Novels"],
+//   "tag": "Award Winners",
+// },
 
 //   {
 //     title: "A Doctor in the House",
@@ -133,9 +134,9 @@ const BookList = () => {
       </Row>
 
       <div className="text-center mt-5">
-        <a href="/" className="btn btn-dark px-3 py-2  shadow-lg ">
-          Manage List
-        </a>
+        <Link to="manage" className="btn btn-dark px-3 py-2  shadow-lg ">
+          Manage Inventories
+        </Link>
       </div>
     </div>
   );
