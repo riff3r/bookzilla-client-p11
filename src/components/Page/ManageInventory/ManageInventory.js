@@ -11,7 +11,7 @@ const ManageInventory = () => {
   const [books, setBooks] = useState([]);
   const [reload, setReload] = useState(true);
 
-  console.log(user.email);
+  // console.log(user.email);
   // All books
   useEffect(() => {
     const email = user.email;

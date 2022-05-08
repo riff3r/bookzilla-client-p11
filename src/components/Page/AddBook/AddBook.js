@@ -8,7 +8,7 @@ import auth from "../../Firebase/Firebase.init";
 const AddBook = () => {
   const [user, loading, error] = useAuthState(auth);
 
-  console.log(user?.email);
+  // console.log(user?.email);
   let navigate = useNavigate();
   const {
     register,
@@ -19,7 +19,7 @@ const AddBook = () => {
   const onSubmit = (data) => {
     let { price } = data;
     let newPrice = +price;
-    console.log(newPrice);
+    // console.log(newPrice);
 
     data.email = user?.email;
 
@@ -30,8 +30,9 @@ const AddBook = () => {
     //   return;
     // }
 
-    axios.post(`https://obscure-shelf-45865.herokuapp.com/add`, { data });
-    // .then((res) => navigate("/manage"));
+    axios
+      .post(`https://obscure-shelf-45865.herokuapp.com/add`, { data })
+      .then((res) => navigate("/myItems"));
   };
 
   return (

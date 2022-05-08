@@ -63,11 +63,11 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       const email = user?.email;
-      console.log(email);
+      // console.log(email);
       axios
         .post(`https://obscure-shelf-45865.herokuapp.com/login`, { email })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           localStorage.setItem("accessToken", res.data.accessToken);
           navigate(from, { replace: true });
         });

@@ -10,8 +10,8 @@ const MyItems = () => {
   const [myBooks, setMyBooks] = useState([]);
   const [reload, setReload] = useState(true);
 
-  console.log(user?.email);
-  console.log(myBooks);
+  // console.log(user?.email);
+  // console.log(myBooks);
 
   useEffect(() => {
     const getMyItems = async () => {
@@ -43,7 +43,7 @@ const MyItems = () => {
     return <LoadingSpinner />;
   }
 
-  console.log(myBooks);
+  // console.log(myBooks);
   return (
     <div className="container my-5 py-5">
       <Table responsive striped bordered hover>
