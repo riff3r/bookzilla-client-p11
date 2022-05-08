@@ -79,9 +79,14 @@ const ItemDetails = () => {
           <p>
             Publisher: <strong>{publisher}</strong>
           </p>
-          <p>
-            Year of Publishing: <strong>{year}</strong>
-          </p>
+          {year ? (
+            <p>
+              Year of Publishing: <strong>{year}</strong>
+            </p>
+          ) : (
+            ""
+          )}
+
           <p>
             Quantity: <strong>{quantity}</strong>
           </p>
