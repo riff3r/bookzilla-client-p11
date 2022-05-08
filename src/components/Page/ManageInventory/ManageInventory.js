@@ -2,17 +2,30 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/Firebase.init";
 
 const ManageInventory = () => {
+  const [user] = useAuthState(auth);
+
   const [books, setBooks] = useState([]);
   const [reload, setReload] = useState(true);
 
+  console.log(user.email);
   // All books
   useEffect(() => {
+    const email = user.email;
     axios
-      .get(`https://obscure-shelf-45865.herokuapp.com/inventory`)
+      .get(
+        `https://obscure-shelf-45865.herokuapp.com/inventory?email=${email}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
       .then((response) => setBooks(response.data));
-  }, [reload]);
+  }, [user, reload]);
 
   // Delete
   const handleDelete = (id) => {

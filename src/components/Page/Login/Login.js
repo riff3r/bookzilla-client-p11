@@ -10,6 +10,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Login = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -35,12 +36,15 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmitEmailLogin = async (data) => {
-    const { email, password } = data;
+  const onSubmitEmailLogin = async (info) => {
+    const { email, password } = info;
 
-    signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(email, password);
 
-    console.log(data);
+    // const { data } = await axios.post(`https://obscure-shelf-45865.herokuapp.com/login`, { email });
+
+    // localStorage.setItem("accessToken", data.accessToken);
+    // console.log(data);
   };
 
   const handleForgetPassword = async (data) => {
@@ -57,7 +61,17 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (user) navigate(from, { replace: true });
+    if (user) {
+      const email = user?.email;
+      console.log(email);
+      axios
+        .post(`https://obscure-shelf-45865.herokuapp.com/login`, { email })
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("accessToken", res.data.accessToken);
+          navigate(from, { replace: true });
+        });
+    }
 
     if (emailError) toast(emailError.message);
 

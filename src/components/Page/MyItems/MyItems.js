@@ -15,10 +15,15 @@ const MyItems = () => {
 
   useEffect(() => {
     const getMyItems = async () => {
-      const email = user?.email;
+      const email = user.email;
       const url = `https://obscure-shelf-45865.herokuapp.com/myItems?email=${email}`;
 
-      const { data } = await axios.get(url);
+      const { data } = await axios.get(url, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+
       setMyBooks(data);
     };
 
