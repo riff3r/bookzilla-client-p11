@@ -12,7 +12,7 @@ import Signup from "./components/Page/Signup/Signup";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import NotFound from "./components/Page/NotFound/NotFound";
 import AddBook from "./components/Page/AddBook/AddBook";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MyItems from "./components/Page/MyItems/MyItems";
 
@@ -24,12 +24,26 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="blog" element={<Blog />} />
-        <Route path="manage" element={<ManageInventory />} />
+        <Route
+          path="manage"
+          element={
+            <RequireAuth>
+              <ManageInventory />
+            </RequireAuth>
+          }
+        />
         <Route path="add" element={<AddBook />} />
         <Route path="myItems" element={<MyItems />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-        <Route path="inventory/:id" element={<ItemDetails />} />
+        <Route
+          path="inventory/:id"
+          element={
+            <RequireAuth>
+              <ItemDetails />
+            </RequireAuth>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

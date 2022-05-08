@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Spinner, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
+import LoadingSpinner from "../../Layout/LoadingSpinner/LoadingSpinner";
 
 const MyItems = () => {
   const [user, loading] = useAuthState(auth);
@@ -34,13 +35,7 @@ const MyItems = () => {
   };
 
   if (loading) {
-    return (
-      <div className="vh-100 vw-100 d-flex justify-content-center align-items-center">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   console.log(myBooks);

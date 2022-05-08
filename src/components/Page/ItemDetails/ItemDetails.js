@@ -36,10 +36,8 @@ const ItemDetails = () => {
   }, [reload]);
 
   const onHandleDelivery = () => {
-    quantity -= 1;
+    --quantity;
     ++sold;
-
-    console.log(quantity, sold);
 
     axios
       .put(`http://localhost:5000/inventory/${id}`, { quantity, sold })

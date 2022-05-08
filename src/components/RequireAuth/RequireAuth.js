@@ -13,8 +13,10 @@ const RequireAuth = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="w-100 d-flex justify-content-center align-items-center">
-        <Spinner animation="border" />
+      <div className="vh-100 vw-100  d-flex justify-content-center align-items-center">
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
       </div>
     );
   }
