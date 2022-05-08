@@ -1,11 +1,3 @@
-#
-
-https://booklovers.ancorathemes.com/
-
-https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-riff3r
-
-https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-riff3r
-
 # Bookzilla
 
 ## [Client Side Private Repo Link -](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-riff3r) [https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-riff3r](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-riff3r)
@@ -24,4 +16,3 @@ https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-riff3r
 - Login and logout Implemented
 - Private route implemented
 - Blog section
--
