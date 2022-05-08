@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
+import { toast } from "react-toastify";
 
 const AddBook = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -25,10 +26,7 @@ const AddBook = () => {
 
     console.log(data);
 
-    // if (newPrice !== "number") {
-    //   console.log(typeof newPrice);
-    //   return;
-    // }
+    if (newPrice !== "number") toast("Please input number in price");
 
     axios
       .post(`https://obscure-shelf-45865.herokuapp.com/add`, { data })
@@ -50,6 +48,7 @@ const AddBook = () => {
             type="text"
             className="form-control"
             id="title"
+            required
           />
         </div>
         <div className="col-md-6">
@@ -62,6 +61,7 @@ const AddBook = () => {
             type="text"
             className="form-control"
             id="author"
+            required
           />
         </div>
         <div className="col-12">
@@ -75,6 +75,7 @@ const AddBook = () => {
             className="form-control"
             id="url"
             placeholder="http://...."
+            required
           />
         </div>
         <div className="col-12">
@@ -88,6 +89,7 @@ const AddBook = () => {
             className="form-control"
             id="description"
             placeholder="Book description"
+            required
           />
         </div>
         <div className="col-md-3">
@@ -100,6 +102,7 @@ const AddBook = () => {
             type="text"
             className="form-control"
             id="publisher"
+            required
           />
         </div>
         <div className="col-md-3">
@@ -112,6 +115,7 @@ const AddBook = () => {
             type="text"
             className="form-control"
             id="price"
+            required
           />
         </div>
         <div className="col-md-3">
@@ -124,6 +128,7 @@ const AddBook = () => {
             type="number"
             className="form-control"
             id="quantity"
+            required
           />
         </div>
         <div className="col-md-3">

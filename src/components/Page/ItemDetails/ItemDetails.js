@@ -93,9 +93,13 @@ const ItemDetails = () => {
             ""
           )}
 
-          <p>
-            Tag: <strong>{tag}</strong>
-          </p>
+          {tag ? (
+            <p>
+              Tag: <strong>{tag}</strong>
+            </p>
+          ) : (
+            ""
+          )}
 
           <Button className="mb-3" onClick={onHandleDelivery} variant="danger">
             Delivered
