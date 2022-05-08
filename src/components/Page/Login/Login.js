@@ -17,6 +17,8 @@ const Login = () => {
   let navigate = useNavigate();
   let location = useLocation();
 
+  let from = location.state?.from?.pathname || "/";
+
   const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
     useSignInWithEmailAndPassword(auth);
 
@@ -54,11 +56,13 @@ const Login = () => {
     toast("Please check your email to reset password");
   };
 
-  let from = location.state?.from?.pathname || "/";
-
   useEffect(() => {
     if (user) navigate(from, { replace: true });
-  }, [user]);
+
+    if (emailError) toast(emailError.message);
+
+    if (googleError) toast(googleError.message);
+  }, [user, emailError, googleError]);
 
   return (
     <div className="container my-5 py-5 vh-75">
@@ -94,7 +98,7 @@ const Login = () => {
         </Form.Group>
 
         <div className="d-grid gap-2 mb-4">
-          <Button className="py-2" variant="danger" type="submit">
+          <Button className="py-2" variant="danger" type="button">
             Login
           </Button>
 
@@ -103,7 +107,7 @@ const Login = () => {
           <Button
             onClick={() => signInWithGoogle()}
             variant="dark"
-            type="submit"
+            type="button"
           >
             <i className="me-3 bi bi-google"></i>
             Login With Google

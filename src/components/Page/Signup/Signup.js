@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../Firebase/Firebase.init";
 
 const Signup = () => {
+  const [user] = useAuthState(auth);
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
   const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-  const [updateProfile, updating, error] = useUpdateProfile(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
   const {
     register,
@@ -28,12 +35,17 @@ const Signup = () => {
       toast("Password Not Matched");
       return;
     }
-    console.log(data);
 
     await createUserWithEmailAndPassword(email, password);
 
     await updateProfile({ displayName });
   };
+
+  useEffect(() => {
+    if (user) navigate(from, { replace: true });
+
+    if (emailError) toast(emailError.message);
+  }, [user, emailError]);
 
   return (
     <div className="container my-5 py-5 vh-75">
