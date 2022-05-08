@@ -98,7 +98,7 @@ const Login = () => {
         </Form.Group>
 
         <div className="d-grid gap-2 mb-4">
-          <Button className="py-2" variant="danger" type="button">
+          <Button className="py-2" variant="danger" type="submit">
             Login
           </Button>
 
