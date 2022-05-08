@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import useBooks from "../../hooks/useBooks";
 import { Link } from "react-router-dom";
 
 const ManageInventory = () => {

@@ -4,12 +4,15 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import "./MainNav.css";
 
 const MainNav = () => {
   const [user, loading, error] = useAuthState(auth);
 
   // console.log(user);
+
+  if (loading) return <LoadingSpinner />;
 
   return (
     <Navbar
