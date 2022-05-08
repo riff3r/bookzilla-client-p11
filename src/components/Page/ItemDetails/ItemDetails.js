@@ -31,7 +31,7 @@ const ItemDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/inventory/${id}`)
+      .get(`https://obscure-shelf-45865.herokuapp.com/inventory/${id}`)
       .then((response) => setBook(response.data));
   }, [reload]);
 
@@ -40,7 +40,10 @@ const ItemDetails = () => {
     ++sold;
 
     axios
-      .put(`http://localhost:5000/inventory/${id}`, { quantity, sold })
+      .put(`https://obscure-shelf-45865.herokuapp.com/inventory/${id}`, {
+        quantity,
+        sold,
+      })
       .then((res) => setReload(!reload));
   };
 
@@ -50,7 +53,9 @@ const ItemDetails = () => {
     const newStock = quantity + +restock;
 
     axios
-      .put(`http://localhost:5000/inventory/${id}`, { restock: newStock })
+      .put(`https://obscure-shelf-45865.herokuapp.com/inventory/${id}`, {
+        restock: newStock,
+      })
       .then((res) => {
         reset();
         setReload(!reload);

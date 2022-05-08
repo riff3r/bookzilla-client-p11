@@ -10,7 +10,7 @@ const ManageInventory = () => {
   // All books
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/inventory`)
+      .get(`https://obscure-shelf-45865.herokuapp.com/inventory`)
       .then((response) => setBooks(response.data));
   }, [reload]);
 
@@ -19,7 +19,7 @@ const ManageInventory = () => {
     const proceed = window.confirm("Do you want to delete?");
     if (proceed) {
       axios
-        .delete(`http://localhost:5000/inventory/${id}`)
+        .delete(`https://obscure-shelf-45865.herokuapp.com/inventory/${id}`)
         .then((res) => setReload(!reload));
     }
   };

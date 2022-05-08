@@ -6,7 +6,7 @@ const useBooks = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/inventory`)
+      .get(`https://obscure-shelf-45865.herokuapp.com/inventory`)
       .then((response) => setBooks(response.data));
   }, []);
 

@@ -30,7 +30,7 @@ const AddBook = () => {
     //   return;
     // }
 
-    axios.post(`http://localhost:5000/add`, { data });
+    axios.post(`https://obscure-shelf-45865.herokuapp.com/add`, { data });
     // .then((res) => navigate("/manage"));
   };
 

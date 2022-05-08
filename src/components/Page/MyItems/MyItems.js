@@ -16,7 +16,7 @@ const MyItems = () => {
   useEffect(() => {
     const getMyItems = async () => {
       const email = user?.email;
-      const url = `http://localhost:5000/myItems?email=${email}`;
+      const url = `https://obscure-shelf-45865.herokuapp.com/myItems?email=${email}`;
 
       const { data } = await axios.get(url);
       setMyBooks(data);
@@ -29,7 +29,7 @@ const MyItems = () => {
     const proceed = window.confirm("Do you want to delete?");
     if (proceed) {
       axios
-        .delete(`http://localhost:5000/inventory/${id}`)
+        .delete(`https://obscure-shelf-45865.herokuapp.com/inventory/${id}`)
         .then((res) => setReload(!reload));
     }
   };
