@@ -4,6 +4,8 @@
 
 ## [Server Side Private Repo Link -](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-riff3r) [https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-riff3r](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-riff3r)
 
+## https://bookzilla-64a8e.web.app
+
 ## https://stackoverflow.com/a/72160114/4944454
 
 <!-- ## [Firebase Hosting link -](https://ruhul-s-consultancy.web.app/) [https://ruhul-s-consultancy.web.app/](https://ruhul-s-consultancy.web.app/) -->
