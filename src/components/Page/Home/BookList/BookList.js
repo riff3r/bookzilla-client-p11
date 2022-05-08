@@ -10,7 +10,7 @@ const BookList = () => {
     <div className="container">
       <Row>
         {books.slice(0, 6).map((book) => (
-          <Col key={book._id} xs={6} md={4} xl={6}>
+          <Col key={book._id} xs={12} md={4} xl={6}>
             <div className="card mb-3" style={{ maxWidth: "660px" }}>
               <div className="row g-0">
                 <div className=" col-lg-12 col-xl-5">

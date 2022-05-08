@@ -65,7 +65,7 @@ const ItemDetails = () => {
   return (
     <Container className="mt-5">
       <Row md={4}>
-        <Col xs={6} md={4}>
+        <Col className="mb-4" xs={12} md={4}>
           <img className="img-fluid" src={image} alt="" />
         </Col>
 

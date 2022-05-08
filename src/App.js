@@ -15,6 +15,7 @@ import AddBook from "./components/Page/AddBook/AddBook";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MyItems from "./components/Page/MyItems/MyItems";
+import "./App.css";
 
 function App() {
   return (

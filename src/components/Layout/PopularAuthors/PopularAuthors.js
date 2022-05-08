@@ -39,7 +39,7 @@ const PopularAuthors = () => {
         <Row>
           {Authors.map((author) => (
             <Col key={author.id} xs={6} md={3}>
-              <div className="card">
+              <div className="card mb-4">
                 <img src={author.image} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4>{author.name}</h4>

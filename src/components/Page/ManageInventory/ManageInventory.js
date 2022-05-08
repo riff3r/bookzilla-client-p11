@@ -32,7 +32,7 @@ const ManageInventory = () => {
         </Link>
       </div>
 
-      <Table striped bordered hover>
+      <Table responsive striped bordered hover>
         <thead className="">
           <tr>
             <th scope="col">Book Name</th>

@@ -41,7 +41,7 @@ const MyItems = () => {
   console.log(myBooks);
   return (
     <div className="container my-5 py-5">
-      <Table striped bordered hover>
+      <Table responsive striped bordered hover>
         <thead className="">
           <tr>
             <th scope="col">Book Name</th>
