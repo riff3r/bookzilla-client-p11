@@ -14,6 +14,7 @@ import NotFound from "./components/Page/NotFound/NotFound";
 import AddBook from "./components/Page/AddBook/AddBook";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MyItems from "./components/Page/MyItems/MyItems";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="blog" element={<Blog />} />
         <Route path="manage" element={<ManageInventory />} />
         <Route path="add" element={<AddBook />} />
+        <Route path="myItems" element={<MyItems />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="inventory/:id" element={<ItemDetails />} />

@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import auth from "../../Firebase/Firebase.init";
 import {
+  useAuthState,
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const Login = () => {
+  const [user, loading, error] = useAuthState(auth);
+
   let navigate = useNavigate();
   let location = useLocation();
 
@@ -53,7 +56,9 @@ const Login = () => {
 
   let from = location.state?.from?.pathname || "/";
 
-  if (emailUser || googleUser) navigate(from, { replace: true });
+  useEffect(() => {
+    if (user) navigate(from, { replace: true });
+  }, [user]);
 
   return (
     <div className="container my-5 py-5 vh-75">

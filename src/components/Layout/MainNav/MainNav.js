@@ -75,12 +75,16 @@ const MainNav = () => {
                 title={<i className="bi bi-person"> {user?.displayName}</i>}
                 id="collasible-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1">
+                <NavDropdown.Item as={Link} to="/manage">
                   {" "}
                   Manage Items
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">add item</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">My items</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/add">
+                  add item
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/myItems">
+                  My items
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   as={Link}

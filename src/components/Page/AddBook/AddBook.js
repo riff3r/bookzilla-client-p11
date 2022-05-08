@@ -2,8 +2,13 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/Firebase.init";
 
 const AddBook = () => {
+  const [user, loading, error] = useAuthState(auth);
+
+  console.log(user?.email);
   let navigate = useNavigate();
   const {
     register,
@@ -12,21 +17,21 @@ const AddBook = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     let { price } = data;
-
     let newPrice = +price;
-
     console.log(newPrice);
 
-    if (newPrice !== "number") {
-      console.log(typeof newPrice);
-      return;
-    }
+    data.email = user?.email;
 
-    axios
-      .post(`http://localhost:5000/add`, { data })
-      .then((res) => navigate("/manage"));
+    console.log(data);
+
+    // if (newPrice !== "number") {
+    //   console.log(typeof newPrice);
+    //   return;
+    // }
+
+    axios.post(`http://localhost:5000/add`, { data });
+    // .then((res) => navigate("/manage"));
   };
 
   return (
